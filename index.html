@@ -16,6 +16,8 @@
             background-size: cover;
             background-repeat: no-repeat;
             transition: background-image 1s ease-in-out;
+            /* Menambahkan gambar latar belakang dari Imgur */
+            background-image: url('https://i.imgur.com/mFL700u.jpg');
         }
 
         .continue-button {
@@ -32,15 +34,14 @@
 <body>
     <div id="landing-page">
         <h1>Selamat Datang di Landing Page</h1>
-        <p>Ini adalah halaman contoh dengan gambar latar belakang yang berubah setiap 2 detik.</p>
+        <p>Ini adalah halaman contoh dengan tombol "Continue" di tengah.</p>
         <button class="continue-button" onclick="changeBackground()">Continue</button>
     </div>
 
     <script>
         var backgrounds = [
-            '<a href="https://imgur.com/mFL700u"><img src="https://i.imgur.com/mFL700u.jpg" title="source: imgur.com" /></a>',
-            '<a href="https://imgur.com/YS8vABR"><img src="https://i.imgur.com/YS8vABR.jpg" title="source: imgur.com" /></a>',
-            '<a href="https://imgur.com/J5TLSmw"><img src="https://i.imgur.com/J5TLSmw.jpg" title="source: imgur.com" /></a>'
+            'url(https://i.imgur.com/mFL700u.jpg)','url(https://i.imgur.com/mFL700u.jpg)','url(https://i.imgur.com/mFL700u.jpg)',
+            
         ];
         var currentBackground = 0;
         var landingPage = document.getElementById('landing-page');
@@ -52,3 +53,6 @@
 
         // Fungsi untuk mengubah gambar latar belakang setiap 2 detik
         setInterval(changeBackground, 2000);
+    </script>
+</body>
+</html>
