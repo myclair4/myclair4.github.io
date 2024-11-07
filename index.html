@@ -3,74 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Preview Generator</title>
+    <title>Custom JSON Generator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Custom Preview Generator</h1>
+    <div class="container">
+        <h1>Custom JSON Generator</h1>
 
-    <!-- Form input untuk URL, Title, Description, dan Image URL -->
-    <div>
-        <label for="urlInput">URL:</label>
-        <input type="text" id="urlInput" placeholder="Masukkan URL"><br><br>
-        
-        <label for="titleInput">Title:</label>
-        <input type="text" id="titleInput" placeholder="Masukkan Judul"><br><br>
+        <!-- Form input untuk URL, Title, Description, dan Image URL -->
+        <div class="form">
+            <label for="urlInput">URL:</label>
+            <input type="text" id="urlInput" placeholder="Masukkan URL"><br><br>
+            
+            <label for="titleInput">Title:</label>
+            <input type="text" id="titleInput" placeholder="Masukkan Judul"><br><br>
 
-        <label for="descriptionInput">Description:</label>
-        <input type="text" id="descriptionInput" placeholder="Masukkan Deskripsi"><br><br>
+            <label for="descriptionInput">Description:</label>
+            <input type="text" id="descriptionInput" placeholder="Masukkan Deskripsi"><br><br>
 
-        <label for="imageInput">Image URL:</label>
-        <input type="text" id="imageInput" placeholder="Masukkan URL Gambar"><br><br>
+            <label for="imageInput">Image URL:</label>
+            <input type="text" id="imageInput" placeholder="Masukkan URL Gambar"><br><br>
 
-        <button onclick="generatePreview()">Tampilkan Pratinjau</button>
+            <button onclick="generateJSON()">Generate JSON</button>
+        </div>
+
+        <!-- Bagian untuk menampilkan hasil JSON dalam kolom yang dapat dicopy -->
+        <div id="jsonOutputContainer" style="display: none; margin-top: 20px;">
+            <h2>Hasil JSON:</h2>
+            <textarea id="jsonOutput" rows="6" readonly></textarea><br><br>
+            <button onclick="copyToClipboard()">Copy JSON</button>
+        </div>
     </div>
 
-    <!-- Bagian untuk menampilkan pratinjau hasil input di dalam kolom yang dapat dicopy -->
-    <div id="preview" style="display: none; margin-top: 20px; padding: 10px; border: 1px solid #ccc;">
-        <h2>Pratinjau:</h2>
-        
-        <label>URL:</label>
-        <input type="text" id="outputURL" readonly><button onclick="copyToClipboard('outputURL')">Copy</button><br><br>
-
-        <label>Title:</label>
-        <input type="text" id="outputTitle" readonly><button onclick="copyToClipboard('outputTitle')">Copy</button><br><br>
-
-        <label>Description:</label>
-        <input type="text" id="outputDescription" readonly><button onclick="copyToClipboard('outputDescription')">Copy</button><br><br>
-
-        <label>Image URL:</label>
-        <input type="text" id="outputImage" readonly><button onclick="copyToClipboard('outputImage')">Copy</button>
-    </div>
-
-    <script>
-        // Fungsi untuk menampilkan pratinjau hasil input di kolom output
-        function generatePreview() {
-            const url = document.getElementById("urlInput").value;
-            const title = document.getElementById("titleInput").value;
-            const description = document.getElementById("descriptionInput").value;
-            const imageUrl = document.getElementById("imageInput").value;
-
-            // Validasi input
-            if (!url || !title || !description || !imageUrl) {
-                alert("Silakan isi semua kolom.");
-                return;
-            }
-
-            // Tampilkan hasil pratinjau dalam kolom yang bisa dicopy
-            document.getElementById("preview").style.display = "block";
-            document.getElementById("outputURL").value = url;
-            document.getElementById("outputTitle").value = title;
-            document.getElementById("outputDescription").value = description;
-            document.getElementById("outputImage").value = imageUrl;
-        }
-
-        // Fungsi untuk menyalin teks ke clipboard
-        function copyToClipboard(elementId) {
-            const copyText = document.getElementById(elementId);
-            copyText.select();
-            document.execCommand("copy");
-            alert("Teks berhasil dicopy!");
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
