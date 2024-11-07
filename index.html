@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Text Generator</title>
+    <title>Custom JSON Generator</title>
     <style>
         /* CSS */
         * {
@@ -77,43 +77,56 @@
 </head>
 <body>
     <div class="container">
-        <h1>Custom Text Generator</h1>
+        <h1>Custom JSON Generator</h1>
 
-        <!-- Form input untuk Nama -->
+        <!-- Form input untuk data -->
         <div class="form">
-            <label for="nameInput">Masukkan Nama:</label>
-            <input type="text" id="nameInput" placeholder="Masukkan Nama"><br><br>
-            <button onclick="generateText()">Generate Teks</button>
+            <label for="urlInput">Masukkan Link Asli:</label>
+            <input type="text" id="urlInput" placeholder="Masukkan Link Asli">
+            
+            <label for="titleInput">Masukkan Title:</label>
+            <input type="text" id="titleInput" placeholder="Masukkan Title">
+            
+            <label for="descriptionInput">Masukkan Deskripsi:</label>
+            <input type="text" id="descriptionInput" placeholder="Masukkan Deskripsi">
+            
+            <label for="imageInput">Masukkan Link Gambar:</label>
+            <input type="text" id="imageInput" placeholder="Masukkan Link Gambar"><br><br>
+            
+            <button onclick="generateJSON()">Generate Teks</button>
         </div>
 
         <!-- Bagian untuk menampilkan hasil teks dalam kolom yang dapat dicopy -->
         <div id="textOutputContainer" style="display: none; margin-top: 20px;">
             <h2>Hasil Teks:</h2>
-            <textarea id="textOutput" rows="2" readonly></textarea><br><br>
+            <textarea id="textOutput" rows="6" readonly></textarea><br><br>
             <button onclick="copyToClipboard()">Copy Teks</button>
         </div>
     </div>
 
     <script>
-        // JavaScript untuk membuat teks hasil input
-        function generateText() {
-            const name = document.getElementById("nameInput").value;
+        // Fungsi untuk membuat teks JSON hasil input
+        function generateJSON() {
+            const url = document.getElementById("urlInput").value;
+            const title = document.getElementById("titleInput").value;
+            const description = document.getElementById("descriptionInput").value;
+            const image = document.getElementById("imageInput").value;
 
             // Validasi input
-            if (!name) {
-                alert("Silakan masukkan nama.");
+            if (!url || !title || !description || !image) {
+                alert("Silakan masukkan semua data.");
                 return;
             }
 
-            // Format teks sebagai output
-            const textResult = `Nama: ${name}`;
+            // Format teks JSON sebagai output
+            const jsonResult = `/short {\n  "url": "${url}",\n  "ogTitle": "${title}",\n  "ogDescription": "${description}",\n  "ogImage": "${image}"\n}`;
 
             // Tampilkan teks di dalam textarea
-            document.getElementById("textOutput").value = textResult;
+            document.getElementById("textOutput").value = jsonResult;
             document.getElementById("textOutputContainer").style.display = "block";
         }
 
-        // JavaScript untuk menyalin teks ke clipboard
+        // Fungsi untuk menyalin teks ke clipboard
         function copyToClipboard() {
             const copyText = document.getElementById("textOutput");
             copyText.select();
@@ -123,4 +136,3 @@
     </script>
 </body>
 </html>
-
