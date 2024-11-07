@@ -1,84 +1,48 @@
-<html>
-  <head>
-    <!-- Primary Meta Tags -->
-    <title>My Awesome Website</title>
-    <meta name="title" content="My Awesome Website">
-    <meta name="description" content="This is a preview for my awesome website.">
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Preview Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Custom Preview Generator</h1>
+    </header>
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="">
-    <meta property="og:title" content="My Awesome Website">
-    <meta property="og:description" content="This is a preview for my awesome website.">
-    <meta property="og:image" content="https://ik.imagekit.io/9pay9gq9g/rachael.grimwood_20220809_p_2900935367885002483_1_2900935363942392405.jpg?updatedAt=1729713865739">
+    <main>
+        <div class="input-container">
+            <label for="urlInput">URL:</label>
+            <input type="text" id="urlInput" placeholder="Masukkan URL">
+            
+            <label for="titleInput">Title:</label>
+            <input type="text" id="titleInput" placeholder="Masukkan Judul">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="">
-    <meta property="twitter:title" content="My Awesome Website">
-    <meta property="twitter:description" content="This is a preview for my awesome website.">
-    <meta property="twitter:image" content="https://ik.imagekit.io/9pay9gq9g/rachael.grimwood_20220809_p_2900935367885002483_1_2900935363942392405.jpg?updatedAt=1729713865739">
+            <label for="descriptionInput">Description:</label>
+            <input type="text" id="descriptionInput" placeholder="Masukkan Deskripsi">
 
-    <!-- Styling -->
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f7f9fc;
-        color: #333;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-      }
-      .container {
-        background: #fff;
-        max-width: 600px;
-        text-align: center;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      }
-      h1 {
-        font-size: 24px;
-        color: #333;
-        margin-bottom: 15px;
-      }
-      p {
-        font-size: 16px;
-        color: #555;
-        margin-bottom: 20px;
-      }
-      .preview-image {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-        margin-bottom: 20px;
-      }
-      .visit-link {
-        font-size: 16px;
-        color: #fff;
-        background-color: #007bff;
-        padding: 10px 20px;
-        border-radius: 5px;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-      }
-      .visit-link:hover {
-        background-color: #0056b3;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <h1>My Awesome Website</h1>
-      <p>This is a preview for my awesome website.</p>
-      <img
-        src="https://ik.imagekit.io/9pay9gq9g/rachael.grimwood_20220809_p_2900935367885002483_1_2900935363942392405.jpg?updatedAt=1729713865739"
-        alt="Preview Image"
-        class="preview-image"
-      />
-      <p><a href="https://imgur.com" class="visit-link">Visit the Actual Page</a></p>
-    </div>
-  </body>
+            <label for="imageInput">Image URL:</label>
+            <input type="text" id="imageInput" placeholder="Masukkan URL Gambar">
+
+            <button onclick="generatePreview()">Tampilkan Pratinjau</button>
+        </div>
+
+        <section id="preview" style="display: none;">
+            <h2>Pratinjau:</h2>
+            <div class="preview-content">
+                <img id="previewImage" src="" alt="Gambar Pratinjau">
+                <h3 id="previewTitle"></h3>
+                <p id="previewDescription"></p>
+                <a id="previewURL" href="" target="_blank">Buka Link</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Website Anda</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
