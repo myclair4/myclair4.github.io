@@ -4,24 +4,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Text Generator</title>
+    <style>
+        /* CSS */
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #textOutputContainer {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>Custom Text Generator</h1>
+    <div class="container">
+        <h1>Custom Text Generator</h1>
 
-    <!-- Form input untuk nama -->
-    <div>
-        <label for="nameInput">Masukkan Nama:</label>
-        <input type="text" id="nameInput" placeholder="Masukkan nama Anda"><br><br>
+        <!-- Form input untuk Nama -->
+        <div class="form">
+            <label for="nameInput">Masukkan Nama:</label>
+            <input type="text" id="nameInput" placeholder="Masukkan Nama"><br><br>
+            <button onclick="generateText()">Generate Teks</button>
+        </div>
 
-        <button onclick="generateText()">Generate Text</button>
+        <!-- Bagian untuk menampilkan hasil teks dalam kolom yang dapat dicopy -->
+        <div id="textOutputContainer" style="display: none; margin-top: 20px;">
+            <h2>Hasil Teks:</h2>
+            <textarea id="textOutput" rows="2" readonly></textarea><br><br>
+            <button onclick="copyToClipboard()">Copy Teks</button>
+        </div>
     </div>
 
-    <!-- Bagian untuk menampilkan hasil teks -->
-    <div id="textOutputContainer" style="display: none; margin-top: 20px;">
-        <h2>Hasil Teks:</h2>
-        <p id="textOutput"></p>
-    </div>
+    <script>
+        // JavaScript untuk membuat teks hasil input
+        function generateText() {
+            const name = document.getElementById("nameInput").value;
 
-    <script src="script.js"></script>
+            // Validasi input
+            if (!name) {
+                alert("Silakan masukkan nama.");
+                return;
+            }
+
+            // Format teks sebagai output
+            const textResult = `Nama: ${name}`;
+
+            // Tampilkan teks di dalam textarea
+            document.getElementById("textOutput").value = textResult;
+            document.getElementById("textOutputContainer").style.display = "block";
+        }
+
+        // JavaScript untuk menyalin teks ke clipboard
+        function copyToClipboard() {
+            const copyText = document.getElementById("textOutput");
+            copyText.select();
+            document.execCommand("copy");
+            alert("Teks berhasil dicopy!");
+        }
+    </script>
 </body>
 </html>
+
